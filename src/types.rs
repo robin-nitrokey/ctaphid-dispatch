@@ -16,10 +16,7 @@ pub enum Error {
 pub type Message = heapless::Vec<u8, 7609>;
 pub type AppResult = core::result::Result<(), Error>;
 pub type ShortMessage = heapless::Vec<u8, 1024>;
-pub type InterchangeResponse = core::result::Result<Message, Error>;
+pub type Request = (Command, Message);
+pub type Response = core::result::Result<Message, Error>;
 
 pub use crate::command::Command;
-
-interchange::interchange! {
-    HidInterchange: ((Command, crate::types::Message), crate::types::InterchangeResponse)
-}
